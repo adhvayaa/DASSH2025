@@ -2,7 +2,10 @@
 # user. The gmail account to send an alert to will be entered by the user on the webpage.
 
 # References:
-# 1. Chat gpt
+# 1. https://www.geeksforgeeks.org/flask-tutorial/
+# 2. https://thepythoncode.com/article/use-gmail-api-in-python
+# 3. https://youtu.be/jQjjqEjZK58?si=3pUanVneV0BsOkv4
+# 4. Chat gpt
 
 from flask import Flask, render_template, request, send_from_directory
 import os
@@ -70,11 +73,26 @@ def extract_links(text):
     return re.findall(r'(https?://\S+|www\.\S+)', text)
 
 def check_phishing_links(links):
-    phishing_indicators = ["login", "verify", "update", "secure", "account", "bank", "paypal"]
+    VT_API_KEY = os.getenv("VT_API_KEY")
+    headers = {"x-apikey": VT_API_KEY}
+    
     for link in links:
         parsed_url = urlparse(link)
+        # Check for common phishing indicators first
+        phishing_indicators = ["login", "verify", "update", "secure", "account", "bank", "paypal"]
         if any(indicator in parsed_url.netloc or indicator in parsed_url.path for indicator in phishing_indicators):
             return True
+        
+        # Send request to VirusTotal
+        vt_url = f"https://www.virustotal.com/api/v3/urls"
+        response = requests.post(vt_url, headers=headers, data={"url": link})
+
+        if response.status_code == 200:
+            vt_data = response.json()
+            malicious_votes = vt_data.get("data", {}).get("attributes", {}).get("last_analysis_stats", {}).get("malicious", 0)
+            if malicious_votes > 0:
+                return True  # Flag as phishing if VirusTotal reports it as malicious
+
     return False
 
 def analyze_email_for_phishing(email_data):
