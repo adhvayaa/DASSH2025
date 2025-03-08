@@ -1,6 +1,4 @@
-Project Description: 
-We created a Gmail Phishing Detector for the DASSH Hackathon 2025. The code for our project is in the GWebPhishingRecPlusAlertWAI.py file. The user must  
-first run the python file GWebPhishingRecPlusAlertWAI.py in their terminal or Command Prompt. The user must then select a Gmail account that needs to be checked for phishing. A link to the webpage our team created will then appear on the terminal. The user must go to that link and enter a Gmail account to which a Phishing alert will be sent. 
+Project Description: We created a Gmail Phishing Detector for the DASSH Hackathon 2025. The code for our project is in the GWebPhishingRecPlusAlertWAI.py file. The user must first run the python file GWebPhishingRecPlusAlertWAI.py in their terminal or Command Prompt. The user must then select a Gmail account that needs to be checked for phishing. A link to the webpage our team created will then appear on the terminal. The user must go to that link and enter a Gmail account to which a Phishing alert will be sent. 
 
 Tools used:
 1. Virus Total in order to detect phishing urls
