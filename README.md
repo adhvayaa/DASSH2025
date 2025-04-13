@@ -11,5 +11,5 @@ Credits:
 2. Word doc - Was done Adhvayaa Sathyanarayan
 3. GWebPhishingRecPlusAlertWAI.py - Was done Adhvayaa Sathyanarayan
 4. Integration of our webpage and py file - Was done Adhvayaa Sathyanarayan and Haniska Peethala
-5. PPT - Was done by Arshpreet Kaur
+5. PPT, ideation, research - Was done by Arshpreet Kaur
 6. Youtube video - Was done by Arshpreet Kaur
